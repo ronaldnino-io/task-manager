@@ -25,6 +25,11 @@
     ],
     "ios": {
       "supportsTablet": true
-    }
+    },
+    "android": {
+      "package": "com.ronaldninoio.taskmanager"
+    },
+    "description": "App para gestionar tareas",
+    "githubUrl": "https://github.com/ronaldnino-io/task-manager.git"
   }
 }
