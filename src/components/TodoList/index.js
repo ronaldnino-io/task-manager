@@ -10,6 +10,8 @@ import {
 } from "react-native";
 import iconCheck from "./assets/check.png";
 import iconDelete from "./assets/delete.png"
+import CheckBox from "react-native-check-box"
+
 
 
 const styles = StyleSheet.create({
@@ -83,7 +85,14 @@ const TodoList = ({ todos, onUpdate, onDelete }) => {
       key={todo.text}
       onPress={() => onUpdate({ ...todo, done: !todo.done })}
     >
-      <Text style={styles.bullet}>-</Text>
+    
+    <CheckBox
+        checkedCheckBoxColor="#aaa"
+        onClick={()=>{
+          onUpdate({ ...todo, done: !todo.done });
+        }}
+        isChecked={todo.done}
+      />
       <Text style={[styles.text, todo.done && styles.textDone]}>
         {todo.text}
       </Text>
@@ -120,8 +129,8 @@ const TodoList = ({ todos, onUpdate, onDelete }) => {
       sections={
           todos && todos.length
           ? [
-            {title:'ToDo', data: todos.filter(todo=> !todo.done)},
-            {title:'Terminadas', data: todos.filter(todo=> todo.done)}
+            {title:'ToDo', data: todos.filter(todo=> !todo.done).sort((a,b) => a.priority > b.priority ? 1 : b.priority > a.priority ? -1 : 0)},
+            {title:'Terminadas', data: todos.filter(todo=> todo.done).sort((a,b) => a.priority > b.priority ? 1 : b.priority > a.priority ? -1 : 0)}
             ]
           :[]
         }
