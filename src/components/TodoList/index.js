@@ -78,12 +78,14 @@ const styles = StyleSheet.create({
 });
 
 
-const TodoList = ({ todos, onUpdate, onDelete }) => {
+const TodoList = ({ todos, onUpdate, onDelete, onEdit }) => {
+  console.info("******funtions**************")
+  console.info(onDelete)
   const renderItem = todo => (
     <TouchableOpacity
       style={styles.listItem}
       key={todo.text}
-      onPress={() => onUpdate({ ...todo, done: !todo.done })}
+      onPress={() => onEdit(todo)}
     >
     
     <CheckBox

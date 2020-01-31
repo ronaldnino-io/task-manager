@@ -1,10 +1,10 @@
 import React from 'react';
-import Main from "./src/screens/main";
+import AppNavigator from "./src/navigation/AppNavigator";
 
 
 export default function App() {
   return (
-    <Main />
+    <AppNavigator />
   );
 }
 

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Modal, Text, View, StyleSheet, TextInpu, TouchableOpacity, Button, TextInput,  Picker} from "react-native";
+import BasicAddItems from "../basicAddItems";
 
 const styles = StyleSheet.create({
   container: {
@@ -66,41 +67,12 @@ export default class AddTodo extends Component {
      
         <View style={styles.container}>
           <View style={styles.content}>
-            <View style={styles.block}>
-              
-              <Text> Titulo</Text>
-              <TextInput
-                style={styles.text}
-                value={text}
-                onChangeText={text => this.setState({ text })}
-                clearButtonMode="always"
-              />
-            </View>
-            <View style={styles.block}>
-              <Text> Descripción</Text>
-              <TextInput
-                style={styles.text}
-                value={description}
-                onChangeText={description =>
-                  this.setState({ description })
-                }
-                clearButtonMode="always"
-              />
-            </View>
-            <View style={styles.block}>
-            <Text> Prioridad</Text>
-            <Picker
-                selectedValue={priority}
-                onValueChange={priority => this.setState({priority})}
-            >
-               {priorities.map((item, index) =>(
-
-                <Picker.Item label={item} value={index}/>
-               ))}
-                
-                
-            </Picker>
-            </View>
+           <BasicAddItems
+            text={text}
+            description={description}
+            priority={priority}
+            onChange={newState => this.setState(newState)}
+           />
             <View style={styles.buttonRow}>
               <Button title="Cerrar" onPress={onCloseModal} color="#ff0000" />
               <Button title="Añadir" onPress={this.addTodo} />

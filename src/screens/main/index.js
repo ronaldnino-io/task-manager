@@ -20,16 +20,16 @@ const styles = StyleSheet.create({
     marginTop: 30,
     alignItems: "center"
   },
-  title: {
-    fontWeight: "bold",
-    fontSize: 20
-  },
   loading: {
     flex: 1
   }
 });
 
 class MainScreen extends Component {
+  static navigationOptions = {
+    title: "Todo List App"
+  }
+
   constructor(props) {
     super(props);
     this.state = {
@@ -77,12 +77,18 @@ class MainScreen extends Component {
   toggleModal = () => {
     this.setState({addModalVisible: !this.state.addModalVisible})
   }
+  openEditTodo = todo =>{
+    this.props.navigation.navigate("Edit",{
+      todo,
+      onSave: this.handleUpdate
+    });
+  }
 
   render() {
     const { todos, newTodo, loading, addModalVisible } = this.state;
     return (
       <SafeAreaView style={styles.container}>
-        <Text style={styles.title}>ToDo List App</Text>
+      
        
         {loading && (
           <ActivityIndicator size="large" color="blue" style={styles.loading} />
@@ -92,6 +98,7 @@ class MainScreen extends Component {
             todos={todos}
             onUpdate={this.handleUpdate}
             onDelete={this.handleDelete}
+            onEdit={this.openEditTodo}
           />
         )}
         <FAB 
@@ -104,6 +111,7 @@ class MainScreen extends Component {
           visible={addModalVisible}
           onCloseModal={this.toggleModal}
           onAddTodo={this.handleAdd}
+          
        />   
       </SafeAreaView>
     );
