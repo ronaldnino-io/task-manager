@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Modal, Text, View, StyleSheet, TextInpu, TouchableOpacity, Button, TextInput,  Picker} from "react-native";
+import { Modal, Text, View, StyleSheet, TextInpu, TouchableOpacity, Button, KeyboardAvoidingView, Platform} from "react-native";
 import BasicAddItems from "../basicAddItems";
 
 const styles = StyleSheet.create({
@@ -65,8 +65,11 @@ export default class AddTodo extends Component {
     return (
       <Modal visible={visible} transparent={true} animationType="slade">
      
-        <View style={styles.container}>
-          <View style={styles.content}>
+        <View 
+        style={styles.container}
+        behavior={Platform.OS === "ios" ? "padding" : null}
+        >
+          <KeyboardAvoidingView style={styles.content}>
            <BasicAddItems
             text={text}
             description={description}
@@ -77,7 +80,7 @@ export default class AddTodo extends Component {
               <Button title="Cerrar" onPress={onCloseModal} color="#ff0000" />
               <Button title="Añadir" onPress={this.addTodo} />
             </View>
-          </View>
+          </KeyboardAvoidingView>
         </View>
       </Modal>
     );

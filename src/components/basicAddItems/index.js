@@ -1,6 +1,7 @@
 
 import React, { Component } from "react";
 import { Modal, Text, View, StyleSheet, TextInpu, TouchableOpacity, Button, TextInput,  Picker} from "react-native";
+import PriorityPicker from "../PriorityPicker";
 
 const styles = StyleSheet.create({
     container: {
@@ -67,17 +68,10 @@ const BasicAddItems = ({
             </View>
             <View style={styles.block}>
             <Text> Prioridad</Text>
-            <Picker
-                selectedValue={priority}
-                onValueChange={priority => onChange({priority})}
-            >
-               {priorities.map((item, index) =>(
-
-                <Picker.Item label={item} value={index}/>
-               ))}
-                
-                
-            </Picker>
+            <PriorityPicker 
+              priority={priority}
+              onChange={priority => onChange({priority})}
+            />
             </View>
            
          
