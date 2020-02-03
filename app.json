@@ -24,10 +24,17 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.ronaldninoio.taskmanager"
     },
     "android": {
-      "package": "com.ronaldninoio.taskmanager"
+      "package": "com.ronaldninoio.taskmanager",
+      "versionCode":1,
+      "permissions": [
+        "ACCESS_COARSE_LOCATION",
+         "ACCESS_FINE_LOCATION",
+          "WRITE_EXTERNAL_STORAGE"
+      ]
     },
     "description": "App para gestionar tareas",
     "githubUrl": "https://github.com/ronaldnino-io/task-manager.git"
